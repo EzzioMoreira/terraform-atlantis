@@ -17,7 +17,7 @@ workflows:
     plan:
       steps:
       - init
-      - plan:
+      - plan
       - run: echo "Atlantis 123"
     apply:
       steps:
