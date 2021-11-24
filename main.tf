@@ -7,6 +7,7 @@ terraform {
     bucket = "metal.corp-devops-test"
     key    = "infra/atlantis-terraform-.tfstate"
     region = "us-east-2"
+    role_arn = "arn:aws:iam::520044189785:role/Atantis-role-terraform"
   }
 } 
 
