@@ -2,7 +2,7 @@ version: 3
 automerge: true
 delete_source_branch_on_merge: true
 projects:
-- name: my-project-name
+- name: atlatis-lab
   dir: .
   workspace: default
   terraform_version: v0.11.0
@@ -10,17 +10,15 @@ projects:
   autoplan:
     when_modified: ["*.tf", "../modules/**.tf"]
     enabled: true
-  apply_requirements: [mergeable, approved]
-  workflow: myworkflow
+  apply_requirements: [mergeable]
+  workflow: default
 workflows:
   myworkflow:
     plan:
       steps:
-      - run: my-custom-command arg1 arg2
       - init
       - plan:
-          extra_args: ["-lock", "false"]
-      - run: my-custom-command arg1 arg2
+      - run: echo "Atlantis 123"
     apply:
       steps:
       - run: echo hi
