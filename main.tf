@@ -21,5 +21,6 @@ resource "aws_instance" "web" {
   tags = {
     Name = "Atlantis"
     Tipo = "Terraform"
+    Environment = "Homologa"
   }
 }

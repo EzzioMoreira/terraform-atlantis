@@ -23,6 +23,3 @@ workflows:
       steps:
       - run: echo hi
       - apply
-allowed_regexp_prefixes:
-- dev/
-- staging/
