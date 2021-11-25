@@ -1,0 +1,18 @@
+projects:
+- dir: proj1
+   workflow: proj1
+workflows:
+  proj1:
+    plan:
+      steps:
+      - env:
+           name: AWS_PROFILE
+           value: default
+      - init
+      - plan
+    apply:
+      steps:
+      - env:
+           name: AWS_PROFILE
+           value: default
+      - apply
