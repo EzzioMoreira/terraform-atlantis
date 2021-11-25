@@ -15,8 +15,7 @@ terraform {
     bucket = "atlantis-terraform-lab"
     key    = "atlantis-terraform-.tfstate"
     region = "us-west-2"
-    access_key = "AKIAXSFIMTBMQN2RFD7R"
-    secret_key = "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"
+    shared_credentials_file = "/home/atlantis/.aws/credentials"
   }
 } 
 
