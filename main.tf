@@ -6,7 +6,7 @@ terraform {
   backend "s3" {
     bucket = "metal.corp-devops-test"
     key    = "infra/atlantis-terraform-.tfstate"
-    region = "us-west-2"
+    region = "us-east-2"
     access_key = "AKIAXSFIMTBMQN2RFD7R"
     secret_key = "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"
   }
