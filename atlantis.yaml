@@ -1,8 +1,8 @@
 projects:
-- dir: proj1
-   workflow: proj1
+- dir: default
+   workflow: default
 workflows:
-  proj1:
+  default:
     plan:
       steps:
       - env:
