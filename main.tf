@@ -11,7 +11,7 @@ terraform {
 } 
 
 resource "aws_s3_bucket" "b" {
-  bucket = "ezzio-moreira-my-tf-bucket"
+  bucket = "ezzio-my-tf-bucket"
   acl    = "private"
 
   tags = {
