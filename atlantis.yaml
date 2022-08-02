@@ -9,7 +9,6 @@ projects:
       when_modified: ["*.tf"]
     apply_requirements: []
 
-version: 3
 automerge: false
 projects:
   - name: app-rapadura-stg
@@ -19,8 +18,7 @@ projects:
       enabled: true
       when_modified: ["*.tf"]
     apply_requirements: []
-
-version: 3
+    
 automerge: false
 projects:
   - name: app-rapadura-prd
