@@ -1,30 +1,13 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-provider "aws" {
-  region = "us-west-2"
-}
-
-terraform {
-  backend "s3" {
-    bucket = "atlantis-terraform-lab"
-    key    = "atlantis-terraform-.tfstate"
-    region = "us-west-2"
-    shared_credentials_file = "/home/atlantis/.aws/credentials"
-  }
-} 
-
 resource "aws_s3_bucket" "b" {
-  bucket = "ezzio123-my-tf1234"
-  acl    = "private"
+  bucket = "ezzio-teste-12345"
 
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
   }
+}
+
+resource "aws_s3_bucket_acl" "example" {
+  bucket = aws_s3_bucket.b.id
+  acl    = "private"
 }
