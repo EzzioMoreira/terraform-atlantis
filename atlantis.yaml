@@ -1,0 +1,10 @@
+version: 3
+automerge: false
+projects:
+  - name: test
+    dir: ./app
+    workspace: default
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf"]
+    apply_requirements: []
