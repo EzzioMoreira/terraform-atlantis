@@ -9,7 +9,6 @@ projects:
       when_modified: ["*.tf"]
     apply_requirements: []
 
-projects:
   - name: app-rapadura-stg
     dir: ./app-rapadura
     workspace: stg
@@ -18,7 +17,6 @@ projects:
       when_modified: ["*.tf"]
     apply_requirements: []
 
-projects:
   - name: app-rapadura-prd
     dir: ./app-rapadura
     workspace: prd
