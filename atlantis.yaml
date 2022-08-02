@@ -2,7 +2,7 @@ version: 3
 automerge: false
 projects:
   - name: app-rapadura-dev
-    dir: ./applications/ddog-postgres
+    dir: ./app-rapadura
     workspace: dev
     autoplan:
       enabled: true
@@ -13,7 +13,7 @@ version: 3
 automerge: false
 projects:
   - name: app-rapadura-stg
-    dir: ./applications/ddog-postgres
+    dir: ./app-rapadura
     workspace: stg
     autoplan:
       enabled: true
@@ -24,7 +24,7 @@ version: 3
 automerge: false
 projects:
   - name: app-rapadura-prd
-    dir: ./applications/ddog-postgres
+    dir: ./app-rapadura
     workspace: prd
     autoplan:
       enabled: true
