@@ -1,0 +1,32 @@
+version: 3
+automerge: false
+projects:
+  - name: app-rapadura-dev
+    dir: ./applications/ddog-postgres
+    workspace: dev
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf"]
+    apply_requirements: []
+
+version: 3
+automerge: false
+projects:
+  - name: app-rapadura-stg
+    dir: ./applications/ddog-postgres
+    workspace: stg
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf"]
+    apply_requirements: []
+
+version: 3
+automerge: false
+projects:
+  - name: app-rapadura-prd
+    dir: ./applications/ddog-postgres
+    workspace: prd
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf"]
+    apply_requirements: [mergeable, approved]
