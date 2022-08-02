@@ -9,7 +9,6 @@ projects:
       when_modified: ["*.tf"]
     apply_requirements: []
 
-automerge: false
 projects:
   - name: app-rapadura-stg
     dir: ./app-rapadura
@@ -18,8 +17,7 @@ projects:
       enabled: true
       when_modified: ["*.tf"]
     apply_requirements: []
-    
-automerge: false
+
 projects:
   - name: app-rapadura-prd
     dir: ./app-rapadura
