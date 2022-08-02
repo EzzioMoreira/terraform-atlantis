@@ -20,7 +20,7 @@ terraform {
 } 
 
 resource "aws_s3_bucket" "b" {
-  bucket = "ezzio123-my-tf123"
+  bucket = "ezzio123-my-tf1234"
   acl    = "private"
 
   tags = {
