@@ -13,7 +13,7 @@ projects:
     dir: ./app-rapadura
     workspace: stg
     autoplan:
-      enabled: true
+      enabled: false
       when_modified: ["*.tf"]
     apply_requirements: []
 
@@ -21,6 +21,6 @@ projects:
     dir: ./app-rapadura
     workspace: prd
     autoplan:
-      enabled: true
+      enabled: false
       when_modified: ["*.tf"]
     apply_requirements: [mergeable, approved]
