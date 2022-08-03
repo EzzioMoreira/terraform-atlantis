@@ -1,11 +1,11 @@
 locals {
   context = {
     default = {
-      buckets_name = {}
+      buckets = {}
     }
 
     dev = {
-      buckets_name = {
+      buckets = {
         bucket1 = {
           bucket_name = "metal-corp-12345"
         }
@@ -13,11 +13,11 @@ locals {
     }
 
     stg = {
-      buckets_name = {}
+      buckets = {}
     }
 
     prd = {
-      buckets_name = {}
+      buckets = {}
     }
   }
 

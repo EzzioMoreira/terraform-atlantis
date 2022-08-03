@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "this" {
-  for_each = local.context[terraform.workspace].buckets_name
-  bucket = each.value
+  for_each = local.context[terraform.workspace].buckets
+  bucket = each.value.bucket_name
   acl    = "private"
   tags   = local.tags
 
