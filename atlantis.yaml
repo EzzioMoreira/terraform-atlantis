@@ -1,0 +1,26 @@
+version: 3
+automerge: false
+projects:
+  - name: app-rapadura-dev
+    dir: ./app-rapadura
+    workspace: dev
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf"]
+    apply_requirements: []
+
+  - name: app-rapadura-stg
+    dir: ./app-rapadura
+    workspace: stg
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf"]
+    apply_requirements: []
+
+  - name: app-rapadura-prd
+    dir: ./app-rapadura
+    workspace: prd
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf"]
+    apply_requirements: [mergeable, approved]
