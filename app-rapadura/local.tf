@@ -5,7 +5,11 @@ locals {
     }
 
     dev = {
-      buckets_name = {}
+      buckets_name = {
+        bucket1 = {
+          bucket_name = "metal-corp-12345"
+        }
+      }
     }
 
     stg = {
@@ -13,11 +17,7 @@ locals {
     }
 
     prd = {
-      buckets_name = {
-        bucket1 = {
-          bucket_name = "metal-corp-12345"
-        }
-      }
+      buckets_name = {}
     }
   }
 
