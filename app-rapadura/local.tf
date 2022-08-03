@@ -1,15 +1,15 @@
 locals {
   context = {
     default = {
-      buckets = {}
+      buckets_name = {}
     }
 
     dev = {
-      buckets = {}
+      buckets_name = {}
     }
 
     stg = {
-      buckets = {}
+      buckets_name = {}
     }
 
     prd = {
