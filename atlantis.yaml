@@ -2,7 +2,7 @@ version: 3
 automerge: false
 projects:
   - name: app-rapadura-dev
-    dir: ./app-rapadura
+    dir: ./infrastructure/app-rapadura
     workspace: dev
     autoplan:
       enabled: true
@@ -10,7 +10,7 @@ projects:
     apply_requirements: []
 
   - name: app-rapadura-stg
-    dir: ./app-rapadura
+    dir: ./infrastructure/app-rapadura
     workspace: stg
     autoplan:
       enabled: false
@@ -18,7 +18,31 @@ projects:
     apply_requirements: []
 
   - name: app-rapadura-prd
-    dir: ./app-rapadura
+    dir: ./infrastructure/app-rapadura
+    workspace: prd
+    autoplan:
+      enabled: false
+      when_modified: ["*.tf"]
+    apply_requirements: [mergeable, approved]
+
+  - name: s3-dev
+    dir: ./infrastructure/s3
+    workspace: dev
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf"]
+    apply_requirements: []
+
+  - name: s3-stg
+    dir: ./infrastructure/s3
+    workspace: stg
+    autoplan:
+      enabled: false
+      when_modified: ["*.tf"]
+    apply_requirements: []
+
+  - name: s3-prd
+    dir: ./infrastructure/s3
     workspace: prd
     autoplan:
       enabled: false

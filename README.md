@@ -25,7 +25,7 @@ Vá para https://ngrok.com/download, baixe o ngrok e `unzi` pele.
 Comece `ngrok` na porta 4141 e anote o nome do host que ela fornece:
 
 ```shell
-./ngrok http 4141
+ngrok http 4141
 ```
 
 ```shell
@@ -64,6 +64,10 @@ export SECRET="{YOUR_RANDOM_STRING}"
 - Siga https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token
 - Criar um token com escopo de repositório.
 - Defina o token como uma variável de ambiente.
+
+```shell
+export TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
 
 ### Iniciar Atlantis
 Antes de iniciar o Atlantis precisamos definir duas variáveis de ambiente:
