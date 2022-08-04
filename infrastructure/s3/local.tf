@@ -1,5 +1,5 @@
 locals {
-  context = {
+  environment = {
     default = {
       buckets = {}
     }
@@ -7,17 +7,28 @@ locals {
     dev = {
       buckets = {
         bucket1 = {
-          bucket_name = "metal-corp-12345"
+          bucket_name = "metal-corp-${terraform.workspace}"
         }
       }
     }
 
     stg = {
-      buckets = {}
+      buckets = {
+        bucket1 = {
+          bucket_name = "metal-corp-${terraform.workspace}"
+        }
+      }
     }
 
     prd = {
-      buckets = {}
+      buckets = {
+        bucket1 = {
+          bucket_name = "metal-corp-${terraform.workspace}"
+        }
+        bucket2 = {
+          bucket_name = "metal-web-site-estatico"
+        }
+      }
     }
   }
 
