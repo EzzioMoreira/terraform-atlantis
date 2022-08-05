@@ -10,4 +10,4 @@ Marque com um `x` todas as opções que se aplicam ao seu PR:
 - [ ] Documentação
 
 ## Outras informações
-Outras informações que considerar necessário (número de ticket do Jira, por exemplo).
+Outras informações que considerar necessário.
