@@ -7,7 +7,7 @@ locals {
     dev = {
       buckets = {
         bucket1 = {
-          bucket_name = "metal-corp-${terraform.workspace}"
+          bucket_name = "app-metal-corp-${terraform.workspace}"
         }
       }
     }
