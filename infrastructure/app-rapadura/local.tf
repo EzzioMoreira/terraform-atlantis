@@ -7,7 +7,7 @@ locals {
     dev = {
       instance_type = {
         instance_1 = {
-          instance_type = "t2.nano"
+          instance_type = "t2.small"
           key_name      = "access.dev"
         }
       }
