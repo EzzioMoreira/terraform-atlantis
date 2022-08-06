@@ -5,12 +5,7 @@ locals {
     }
 
     dev = {
-      instance_type = {
-        instance_1 = {
-          instance_type = "t2.small"
-          key_name      = "access.dev"
-        }
-      }
+      instance_type = {}
     }
 
     stg = {
