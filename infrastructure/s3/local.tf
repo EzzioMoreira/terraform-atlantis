@@ -33,9 +33,9 @@ locals {
   }
 
   region   = "us-east-1"
-  team     = "DevOps-CE"
+  team     = "devopsday"
   env      = terraform.workspace
-  project  = "Metal.corp"
+  project  = "metal.corp"
 
   tags = {
     Env            = local.env

@@ -1,11 +1,17 @@
 # terraform-atlantis
 
-Atlantis é um aplicativo para automatizar o Terraform por meio de pull requests. O Atlantis ouve os webhooks do GitHub, GitLab ou Bitbucket sobre solicitações de pull do Terraform. Em seguida, ele é executado `terraform plan` no comentário do pull request.
-Quando precisar, escreva um comentário no PR `atlantis apply` e o Atlantis executará o `terraform apply`.
+Atlantis é um aplicativo para automatizar o deploy de infraestrutura como código, tem como objetivo simplificar o gerenciamento de projetos de infraestrutura baseados em Terraform. O Atlantis funciona em conjunto com plataformas de gerenciamento de código como o GitHub, GitLab ou Bitbucket, e ouve solicitações de `pull request` do Terraform por meio de webhooks.
+
+Quando uma solicitação de pull request é recebida, o Atlantis executa o comando `terraform plan` e gera um comentário no PR com a saída do plano, permitindo que os membros da equipe revisem as alterações propostas.
+
+Quando a equipe estiver pronta para aplicar as alterações, ela pode simplesmente escrever um comentário no PR com o comando atlantis apply, e o Atlantis executará o terraform apply. Isso ajuda a simplificar o fluxo de trabalho do Terraform e reduzir o tempo gasto na execução de tarefas manuais repetitivas.
 
 ## Testando Atlantis Localmente
 
-Estas instruções são para executar o Atlantis localmente em seu próprio computador para que você possa testá-lo em seus próprios repositórios antes de decidir se deseja instalá-lo de forma mais permanente.
+Essas instruções explicam como executar o Atlantis em seu próprio computador para que você possa testá-lo em seus próprios repositórios antes de decidir instalá-lo permanentemente.
+
+Pré-requisito
+- Docker
 
 ### Instalar Terraform
 
@@ -21,15 +27,16 @@ Faça o download do binário Atlantis.
 
 Ngrok é uma ferramenta que encaminha sua porta local para um nome de host público aleatório. O Atlantis será executado através do envio de webhook do Github. 
 
-Vá para https://ngrok.com/download, baixe o ngrok e `unzi` pele.
-Comece `ngrok` na porta 4141 e anote o nome do host que ela fornece:
-
 ```shell
-ngrok http 4141
+docker run -it -p 4141:4141 -p 4040:4040 ngrok/ngrok:alpine http 80
 ```
 
+Copie a url do campo `Forwarding`:
+
+![URL Ngrok](./img/ngrok-forwarding.png)
+
 ```shell
-export URL="https://{YOUR_HOSTNAME}.ngrok.io"
+export URL="https://{MUDE-PARA-URL-FORWARDING}"
 ```
 
 ### Criar um token para webhook
@@ -38,25 +45,25 @@ O GitHub e o GitLab usam segredos de webhook para que os clientes possam verific
 Crie uma string aleatória de qualquer tamanho (você pode usar https://www.random.org/strings/ ) e defina uma variável de ambiente:
 
 ```shell
-export SECRET="{YOUR_RANDOM_STRING}"
+export SECRET="{MUDE=PARA-SECRET-STRING}"
 ```
 
 ### Adicionar webhook no repositório GitHub
 
-- Vá para as configurações do seu repositório
-- Selecione Webhooks ou Hooks na barra lateral
-- Clique em Adicionar webhook
-- Defina Payload URL para o seu ngrok url com `/events` no final. Ex.https://c5004d84.ngrok.io/events
+- Vá para as configurações do seu repositório github.
+- Selecione Webhooks ou Hooks na barra lateral.
+- Clique em Adicionar webhook.
+- Defina Payload URL para o seu ngrok url com `/events` no final. Ex.`http://c5004d84.ngrok.io/events`.
 - Verifique novamente se você adicionou `/events` ao final do seu URL.
-- Defina o tipo de conteúdo paraapplication/json
-- Defina o segredo para sua string aleatória
-- Selecione Deixe-me selecionar eventos individuais
-- Verifique as caixas
+- Defina o tipo de conteúdo application/json.
+- Defina o segredo para sua string aleatória.
+- Selecione a opção, Deixe-me selecionar eventos individuais.
+- Verifique as caixas:
     - Pull request reviews
     - Pushes
     - Issue comments
     - Pull requests
-- Deixar Ativo marcado
+- Deixar Ativo, marcado.
 - Clique em Adicionar webhook
 
 ### Token de acesso GitHub
@@ -101,13 +108,7 @@ Agora podemos iniciar o Atlantis.
 
 
 ```shell
-./atlantis server \
---atlantis-url="$URL" \
---gh-user="$USERNAME" \
---gh-token="$TOKEN" \
---gh-webhook-secret="$SECRET" \
---repo-allowlist="$REPO_ALLOWLIST" \
---repo-config=./repos.yaml
+docker run -d --name atlantis -e URL=$$URL -e SECRET=$$SECRET -e TOKEN=$$TOKEN -e USERNAME=$$USERNAME -e REPO_ALLOWLIST=$$REPO_ALLOWLIST -e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY runatlantis/atlantis:latest server --atlantis-url="$URL" --gh-user="$USERNAME" --gh-token="$TOKEN" --gh-webhook-secret="$SECRET" --repo-allowlist="$REPO_ALLOWLIST"
 ```
 
 ### Criar uma solicitação pull
